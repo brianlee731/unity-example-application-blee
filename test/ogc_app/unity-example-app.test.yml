@@ -11,12 +11,12 @@
         unity_stac_auth: 'NONE'
     },
     parameters: {
-        output_collection: 'urn:nasa:unity:unity:test:unity-tutorial',
+        output_collection: 'urn:nasa:unity:unity:test:unity-tutorial___1',
         summary_table_filename: 'summary_table.txt'
     },
     stage_out: { 
         staging_bucket: 'unity-test-unity-storage',
-        collection_id: 'urn:nasa:unity:unity:test:unity-tutorial',
+        collection_id: 'urn:nasa:unity:unity:test:unity-tutorial___1',
         result_path_prefix: 'stage_out'
     }
 }
