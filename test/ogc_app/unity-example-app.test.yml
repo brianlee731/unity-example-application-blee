@@ -16,6 +16,7 @@
     },
     stage_out: { 
         staging_bucket: 'unity-test-unity-storage',
-        collection_id: 'urn:nasa:unity:unity:test:unity-tutorial'
+        collection_id: 'urn:nasa:unity:unity:test:unity-tutorial',
+        result_path_prefix: 'stage_out'
     }
 }
