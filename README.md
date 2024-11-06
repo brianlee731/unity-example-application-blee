@@ -43,6 +43,13 @@ The `process.ipynb` notebook file is designed to work either as an independent n
 
 Unity OGC applications rely upon using [Papermill parameritzation](https://papermill.readthedocs.io/en/latest/usage-parameterize.html) of arguments. One of the cells is tagged with the `parameters` tag, indicating to Papermill which cell to inspect for insertion of values from the command line. See the [app-pack-generator](https://github.com/unity-sds/app-pack-generator) for more information on the formatting of parameters and the use of type hints.
 
+### OGC Run
+ to run this without the stage-in or out parameters, simply call the process.cwl contained in this repo:
+
+```
+cwltool process.cwl --input test/stage_in/ --output_collection MYCOLLECTION --example_argument_empty ''
+```
+
 ### stage-in
 
 This notebook is connected to a Unity stage-in process through the `input_stac_collection_file` variable. This variable contains the location of a STAC feature collection file. That feature collection points to the input files used by the notebook. In our example notebook we use Unity-py to parse the file and obtain the full paths to the input files. 
