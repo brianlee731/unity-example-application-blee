@@ -47,7 +47,23 @@ Unity OGC applications rely upon using [Papermill parameritzation](https://paper
  to run this without the stage-in or out parameters, simply call the process.cwl contained in this repo:
 
 ```
-cwltool process.cwl --input test/stage_in/ --output_collection MYCOLLECTION --example_argument_empty ''
+# run stage in
+
+cwltool --outdir stage_in --copy-output stage_in.cwl test/ogc_app_package/stage_in.yml
+
+#For my run, it ended up in a directory called z7ai3uj8
+
+# For now, the current stage_in creates an invalid 'root' in catalog.json. you'll need to set the root from /<someting>/catalog.json to catalog.json
+vim z7ai3uj8/catalog.json
+
+# Pass that as the directory into the process.py runs
+cwltool  process.cwl --example_argument_empty '' --input z7ai3uj8/ --output_collection <mycollection>
+
+#The output files and catalog.json from this run were stored in 02kajdto
+
+#run stageout
+cwltool stage_out.cwl --output_dir 02kajdto/ --staging_bucket <mybucket> 
+
 ```
 
 ### stage-in
