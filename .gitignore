@@ -7,9 +7,10 @@ env/
 # Jupyter temporary directory
 .ipynb_checkpoints/
 
-# Output from process.ipynb
-summary_table.txt
-process_results.json
+# User created monolithic app job input file derived from template
+test/monolithic_app/cwl_job_input.yml
+
+# Output from process.ipynb and test scripts
 test/process_results/
 
 # Unity App Generator file
