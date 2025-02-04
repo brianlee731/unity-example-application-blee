@@ -9,4 +9,4 @@ cd $BASE_DIR
 build_ogc_app init .
 
 build_ogc_app build_docker
-build_ogc_app build_cwl
+build_ogc_app build_cwl --monolithic

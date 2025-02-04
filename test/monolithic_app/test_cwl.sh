@@ -5,6 +5,7 @@ BASE_DIR=$(realpath $(dirname $0)/../..)
 
 WORKFLOW_FILENAME=$BASE_DIR/.unity_app_gen/cwl/workflow.cwl
 JOB_INP_FILENAME=$SCRIPT_DIR/cwl_job_input.yml
+RUN_DIR=$BASE_DIR/test/process_results
 
 if [ ! -e $WORKFLOW_FILENAME ]; then
     echo "ERROR: Run $SCRIPT_DIR/build_app.sh first to generate CWL output"
@@ -44,6 +45,9 @@ done
 echo "Using modified job input file $modified_job_inp_file:"
 cat $modified_job_inp_file
 
+mkdir -p $RUN_DIR
+cd $RUN_DIR
+
 # Detect if using Podman 
 if [ ! -z "$(which podman)" ]; then
     use_podman_arg="--podman"
@@ -53,6 +57,6 @@ cwltool \
     --debug --leave-tmpdir --no-read-only \
     $use_podman_arg \
     "$WORKFLOW_FILENAME" "$modified_job_inp_file" \
-    $*
+    $* |& tee $RUN_DIR/test_monolithic_cwl.log
 
 rm $modified_job_inp_file
